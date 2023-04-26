@@ -16,11 +16,23 @@ function getComputerChoice(){
 }
 
 const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.id)
+    })
+})
 
 // Plays a round of RPS between the user and the computer
 function playRound(playerChoice){
 
     let computerSelection = getComputerChoice();
+
+    if (playerChoice == computerSelection){
+        console.log('draw')
+        return 
+    }
+
+    winCheck(playerChoice, computerSelection)
 
 }
 
@@ -30,7 +42,11 @@ function winCheck(player, computer){
     const scissorWin = 'scissors paper'
     let check = `${player} ${computer}`
     if (check == rockWin || check == paperWin || check == scissorWin){
+        console.log('win')
         return 'win'
-    } else return 'lose'
+    } else {
+        console.log('lose')
+        return 'lose'
+    }
 }
 
