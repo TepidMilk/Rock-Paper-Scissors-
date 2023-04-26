@@ -85,7 +85,7 @@ function checkWinner(){
         scores.append(winner)
     }
     else if (computer == 5){
-        scores.textContent = 'OH NO You\'ve lost!'
+        winner.textContent = 'OH NO You\'ve lost!'
         scores.append(winner)
     }
 }
