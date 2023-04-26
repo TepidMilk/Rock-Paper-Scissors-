@@ -37,11 +37,12 @@ function playRound(playerChoice){
         return 
     }
 
-    trackScores(winCheck(playerChoice, computerSelection))
+    trackScores(getDecision(playerChoice, computerSelection))
 
     scores.appendChild(playerScore)
     scores.appendChild(computerScore)
 
+    checkWinner()
 }
 
 function getDecision(player, computer){
@@ -66,4 +67,16 @@ function trackScores(decision){
         computer++
         computerScore.textContent = `Computer Score: ${computer}`
     } 
+}
+
+function checkWinner(){
+    if (player == 5 || computer == 5){
+        buttons.forEach((button) => {
+            button.disabled = true;
+        })
+    }
+
+    if (player == 5){
+        
+    }
 }
