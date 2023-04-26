@@ -15,6 +15,11 @@ function getComputerChoice(){
     }
 }
 
+let player = 0
+let computer = 0
+const scores = document.querySelector('.scores');
+const playerScore = scores.firstElementChild
+const computerScore = scores.lastElementChild
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -32,11 +37,14 @@ function playRound(playerChoice){
         return 
     }
 
-    winCheck(playerChoice, computerSelection)
+    trackScores(winCheck(playerChoice, computerSelection))
+
+    scores.appendChild(playerScore)
+    scores.appendChild(computerScore)
 
 }
 
-function winCheck(player, computer){
+function getDecision(player, computer){
     const rockWin = 'rock scissors'
     const paperWin = 'paper rock'
     const scissorWin = 'scissors paper'
@@ -50,3 +58,12 @@ function winCheck(player, computer){
     }
 }
 
+function trackScores(decision){
+    if (decision == 'win'){
+        player++
+        playerScore.textContent = `Player Score: ${player}`
+    } else if (decision == 'lose'){
+        computer++
+        computerScore.textContent = `Computer Score: ${computer}`
+    } 
+}
